@@ -44,7 +44,7 @@ func New(options *Options) (*Exporter, error) {
 		return nil, errors.Wrap(err, "could not template path")
 	}
 
-	run := sarif.NewRunWithInformationURI("nuclei", "https://github.com/projectdiscovery/nuclei")
+	run := sarif.NewRunWithInformationURI("nuclei", "https://github.com/SANARP98/nucleitemplates")
 	return &Exporter{options: options, home: templatePath, sarif: report, run: run, mutex: &sync.Mutex{}}, nil
 }
 
@@ -63,9 +63,9 @@ func (exporter *Exporter) Export(event *output.ResultEvent) error {
 
 	var templateURL string
 	if strings.HasPrefix(event.TemplatePath, exporter.home) {
-		templateURL = "https://github.com/projectdiscovery/nuclei-templates/blob/master" + templatePath
+		templateURL = "https://github.com/SANARP98/nucleitemplates/blob/master" + templatePath
 	} else {
-		templateURL = "https://github.com/projectdiscovery/nuclei-templates"
+		templateURL = "https://github.com//SANARP98/nucleitemplates"
 	}
 
 	var ruleDescription string
